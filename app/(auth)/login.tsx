@@ -6,6 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CustomButton } from "@/components/CustomButton";
 import { CustomInput } from "@/components/CustomInput";
+import GoogleButton from "@/components/GoogleButton";
 import SquareIcon from "@/components/SquareIcon";
 import { colors } from "@/constants/colors";
 
@@ -54,11 +55,7 @@ export default function LoginScreen() {
         </View>
 
         <Text style={styles.or}>OR</Text>
-        <CustomButton
-          title="Continue with Google"
-          variant="secondary"
-          onPress={() => {}}
-        />
+        <GoogleButton />
 
         <Text style={styles.footerText}>
           Don&apos;t have an account?{" "}
@@ -75,7 +72,7 @@ const styles = StyleSheet.create({
   safe: {
     flex: 1,
     backgroundColor: colors.appBackground,
-    paddingTop:50
+    paddingTop: 50,
   },
   content: {
     paddingHorizontal: 18,

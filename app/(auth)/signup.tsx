@@ -6,6 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CustomButton } from "@/components/CustomButton";
 import { CustomInput } from "@/components/CustomInput";
+import GoogleButton from "@/components/GoogleButton";
 import { colors } from "@/constants/colors";
 
 export default function SignupScreen() {
@@ -18,7 +19,10 @@ export default function SignupScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
         <Text style={styles.heading}>Create Account</Text>
         <Text style={styles.subHeading}>Join SELECTSAFE Apps.</Text>
 
@@ -50,19 +54,27 @@ export default function SignupScreen() {
             onChangeText={setPassword}
             secureTextEntry
           />
-          <Pressable style={styles.checkboxRow} onPress={() => setAccepted((prev) => !prev)}>
+          <Pressable
+            style={styles.checkboxRow}
+            onPress={() => setAccepted((prev) => !prev)}
+          >
             <View style={[styles.checkbox, accepted && styles.checkboxActive]}>
-              {accepted ? <Ionicons name="checkmark" size={14} color={colors.white} /> : null}
+              {accepted ? (
+                <Ionicons name="checkmark" size={14} color={colors.white} />
+              ) : null}
             </View>
             <Text style={styles.checkboxText}>
               I agree to the <Text style={styles.link}>Terms & Conditions</Text>
             </Text>
           </Pressable>
-          <CustomButton title="Sign Up" onPress={() => router.push("/select-allergies")} />
+          <CustomButton
+            title="Sign Up"
+            onPress={() => router.push("/select-allergies")}
+          />
         </View>
 
         <Text style={styles.or}>OR CONTINUE WITH</Text>
-        <CustomButton title="Continue with Google" variant="secondary" onPress={() => {}} />
+        <GoogleButton />
 
         <Text style={styles.footerText}>
           Already have an account?{" "}
@@ -105,13 +117,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-    marginVertical:15
+    marginVertical: 15,
   },
   checkbox: {
     width: 25,
     height: 25,
     borderRadius: 5,
-    
+
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#EBD4D4",
