@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
+import { CustomButton } from "@/components/ui/CustomButton";
 import { colors } from "@/constants/colors";
 
 const LEVELS = ["MILD", "MODERATE", "SEVERE", "CRITICAL"] as const;
@@ -21,7 +21,7 @@ const ICONS: Record<string, string> = {
 
 const FALLBACK = ["dairy", "eggs", "garlic", "corn", "onion", "peanuts"];
 
-export function ReactionProfileScreen() {
+function ReactionProfileScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ items?: string }>();
   const items = useMemo(() => {
@@ -88,7 +88,7 @@ export function ReactionProfileScreen() {
           );
         })}
 
-        <CustomButton title="SAVE" onPress={() => router.replace("/(tabs)")} />
+        <CustomButton title="SAVE" onPress={() => router.replace("/(protected)/(tabs)")} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -100,6 +100,7 @@ function formatLabel(value: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
+export default ReactionProfileScreen;
 
 const styles = StyleSheet.create({
   safe: {
@@ -123,6 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     padding: 12,
+    paddingRight: 30,
     paddingBottom: 30,
     elevation: 2,
     shadowColor: "#000",
@@ -186,8 +188,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     position: "absolute",
     marginLeft: -6,
-    borderWidth:4,
-    borderColor:colors.white,
+    borderWidth: 4,
+    borderColor: colors.white,
     elevation: 4,
     shadowColor: "#000",
     shadowOffset: {

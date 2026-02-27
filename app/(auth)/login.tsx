@@ -4,10 +4,10 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
-import { CustomInput } from "@/components/CustomInput";
-import GoogleButton from "@/components/GoogleButton";
 import SquareIcon from "@/components/SquareIcon";
+import { CustomButton } from "@/components/ui/CustomButton";
+import { CustomInput } from "@/components/ui/CustomInput";
+import GoogleButton from "@/components/ui/GoogleButton";
 import { colors } from "@/constants/colors";
 
 export default function LoginScreen() {

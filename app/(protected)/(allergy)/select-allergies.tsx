@@ -10,8 +10,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
+import { CustomButton } from "@/components/ui/CustomButton";
 import { colors } from "@/constants/colors";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 type AllergyItem = {
   id: string;
@@ -30,7 +31,7 @@ const ALLERGIES: AllergyItem[] = [
   { id: "onion", label: "Onion", icon: "🧅" },
 ];
 
-export function SelectAllergiesScreen() {
+ function SelectAllergiesScreen() {
   const router = useRouter();
   const [selected, setSelected] = useState<string[]>(["shrimp"]);
   const [customAllergy, setCustomAllergy] = useState("");
@@ -96,7 +97,15 @@ export function SelectAllergiesScreen() {
                 >
                   <Text style={styles.iconText}>{item.icon}</Text>
                 </View>
-                {active ? <Text style={styles.check}>✓</Text> : null}
+                {active ? (
+                  <View style={styles.check}>
+                    <FontAwesome5
+                      name="check-circle"
+                      size={20}
+                      color={colors.primary}
+                    />
+                  </View>
+                ) : null}
                 <Text style={styles.cardLabel}>{item.label}</Text>
               </Pressable>
             );
@@ -124,6 +133,7 @@ export function SelectAllergiesScreen() {
     </SafeAreaView>
   );
 }
+export default SelectAllergiesScreen;
 
 const styles = StyleSheet.create({
   safe: {

@@ -1,9 +1,9 @@
-import { useRouter } from "expo-router";
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
+import { CustomButton } from "@/components/ui/CustomButton";
 import { colors } from "@/constants/colors";
 
 export default function SlideThree() {
@@ -26,8 +26,8 @@ export default function SlideThree() {
           <Text style={styles.title}>Find Allergy-Friendly</Text>
           <Text style={styles.title}>Restaurants</Text>
           <Text style={styles.subtitle}>
-            Discover top-rated spots nearby that cater specifically to your dietary needs and
-            safety.
+            Discover top-rated spots nearby that cater specifically to your
+            dietary needs and safety.
           </Text>
         </View>
         <View style={styles.footer}>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     gap: 16,
-    marginBottom:50
+    marginBottom: 50,
   },
   dots: {
     flexDirection: "row",

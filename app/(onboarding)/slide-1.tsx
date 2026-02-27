@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
+import { CustomButton } from "@/components/ui/CustomButton";
 import { colors } from "@/constants/colors";
 
 export default function SlideOne() {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   image: {
     width: 250,
     height: 220,
-    marginBottom: 30
+    marginBottom: 30,
   },
   title: {
     color: colors.textPrimary,

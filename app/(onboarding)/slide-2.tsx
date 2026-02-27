@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
+import { CustomButton } from "@/components/ui/CustomButton";
 import { colors } from "@/constants/colors";
 
 export default function SlideTwo() {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     gap: 16,
-    marginBottom:50
+    marginBottom: 50,
   },
   dots: {
     flexDirection: "row",

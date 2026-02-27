@@ -1,5 +1,6 @@
+import HomeCarousal from "@/components/ui/HomeCarousel";
 import { router } from "expo-router";
-import { Bell, Scan, Search, Star } from "lucide-react-native";
+import { Bell, Search, Star } from "lucide-react-native";
 import React from "react";
 import {
   Dimensions,
@@ -30,7 +31,7 @@ const Home = () => {
           </View>
           <TouchableOpacity
             style={styles.notificationBtn}
-            onPress={() => router.push("/(tabs)/(home)/notification")}
+            onPress={() => router.push("/notification")}
           >
             <Bell size={24} color="#333" />
             <View style={styles.notifBadge} />
@@ -48,66 +49,13 @@ const Home = () => {
         </View>
 
         {/* Banner Carousel */}
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          style={styles.bannerCarousel}
-        >
-          {/* Banner 1: Scan Product */}
-          <View style={styles.banner}>
-            <View
-              style={{
-                flex: 1
-              }}
-            >
-              <Text style={styles.bannerTagline}>INSTANT ANALYSIS</Text>
-              <Text style={styles.bannerTitle}>Scan Product</Text>
-              <Text style={styles.bannerSub}>
-                Check ingredients against your 12 saved allergens.
-              </Text>
-              <View style={styles.paginationDots}>
-                <View style={[styles.dot, styles.activeDot]} />
-                <View style={styles.dot} />
-              </View>
-            </View>
-            <View style={styles.scanIconContainer}>
-              <View style={styles.scannerGraphic}>
-                <Scan size={40} color="#FF6B00" />
-              </View>
-            </View>
-          </View>
-
-          {/* Banner 2: Scan Menu */}
-          <View style={[styles.banner, { backgroundColor: "#3D3129" }]}>
-            <View
-              style={{
-                flex: 1,
-              }}
-            >
-              <Text style={styles.bannerTagline}>DINING OUT</Text>
-              <Text style={styles.bannerTitle}>Scan Menu</Text>
-              <Text style={styles.bannerSub}>
-                Quickly identify safe dishes from any physical restaurant menu.
-              </Text>
-              <View style={styles.paginationDots}>
-                <View style={styles.dot} />
-                <View style={[styles.dot, styles.activeDot]} />
-              </View>
-            </View>
-            <View style={styles.scanIconContainer}>
-              <View
-                style={[styles.scannerGraphic, { backgroundColor: "#2C211A" }]}
-              >
-                {/* Reusing Scan icon or you could use Utensils from lucide */}
-                <Scan size={40} color="#FF6B00" />
-              </View>
-            </View>
-          </View>
-        </ScrollView>
+        <HomeCarousal />
 
         {/* Recent Product Scanning */}
-        <SectionHeader title="Recent Product Scanning" />
+        <SectionHeader
+          title="Recent Product Scanning"
+          onPress={() => router.push("/recent-product")}
+        />
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -118,14 +66,18 @@ const Home = () => {
         </ScrollView>
 
         {/* Nearby Safe-Restaurant */}
-        <SectionHeader title="Nearby Safe-Resturent" />
+        <SectionHeader
+          title="Nearby Safe-Resturent"
+          onPress={() => router.push("/nearby-restaurant")}
+        />
         <RestaurantCard
           name="The Green Bistro"
           dist="0.4 miles"
           tags="Healthy & Vegan"
           safety="98% Safe"
           rating={5}
-          img="https://images.unsplash.com/photo-1517248135467-4c7ed9d42339?w=200"
+          img={require("@/assets/images/restaurant1.jpg")}
+          onPress={() => router.push({ pathname: "/restaurant-details", params: { id: "gathering-table" } })}
         />
         <RestaurantCard
           name="Patio Burger Co."
@@ -133,7 +85,8 @@ const Home = () => {
           tags="American Classics"
           safety="98% Safe"
           rating={4}
-          img="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=200"
+          img={require("@/assets/images/restaurant2.jpg")}
+          onPress={() => router.push({ pathname: "/restaurant-details", params: { id: "patio-burger" } })}
         />
       </ScrollView>
     </SafeAreaView>
@@ -142,10 +95,10 @@ const Home = () => {
 
 // --- Sub-Components ---
 
-const SectionHeader = ({ title }: any) => (
+const SectionHeader = ({ title, onPress }: any) => (
   <View style={styles.sectionHeader}>
     <Text style={styles.sectionTitle}>{title}</Text>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <Text style={styles.viewAll}>View all</Text>
     </TouchableOpacity>
   </View>
@@ -166,9 +119,9 @@ const ProductCard = ({ name, status, isSafe }: any) => (
   </View>
 );
 
-const RestaurantCard = ({ name, dist, tags, safety, rating, img }: any) => (
-  <View style={styles.restCard}>
-    <Image source={{ uri: img }} style={styles.restImg} />
+const RestaurantCard = ({ name, dist, tags, safety, rating, img, onPress }: any) => (
+  <TouchableOpacity style={styles.restCard} onPress={onPress} activeOpacity={0.9}>
+    <Image source={img} style={styles.restImg} />
     <View style={styles.restInfo}>
       <View style={styles.restHeaderRow}>
         <Text style={styles.restName}>{name}</Text>
@@ -191,7 +144,7 @@ const RestaurantCard = ({ name, dist, tags, safety, rating, img }: any) => (
         <Text style={styles.reviewsText}>(120 reviews)</Text>
       </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 // --- Styles ---
@@ -240,7 +193,6 @@ const styles = StyleSheet.create({
     marginHorizontal: -20, // Offsets the parent container padding to allow edge-to-edge swiping
   },
   banner: {
-    backgroundColor: "#2C211A",
     borderRadius: 20,
     padding: 25,
     flexDirection: "row",

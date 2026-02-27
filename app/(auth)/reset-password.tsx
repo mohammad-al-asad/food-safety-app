@@ -4,8 +4,8 @@ import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
-import { CustomInput } from "@/components/CustomInput";
+import { CustomButton } from "@/components/ui/CustomButton";
+import { CustomInput } from "@/components/ui/CustomInput";
 import { colors } from "@/constants/colors";
 import SquareIcon from "@/components/SquareIcon";
 

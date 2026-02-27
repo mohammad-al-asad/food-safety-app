@@ -10,7 +10,7 @@ const GoogleButton = () => {
     >
       <View style={styles.content}>
         <Image 
-          source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_Color_Logo.svg/1200px-Google_Color_Logo.svg.png' }} 
+          source={require("@/assets/icons/google.png")} 
           style={styles.googleIcon} 
         />
         <Text style={styles.buttonText}>Continue with Google</Text>

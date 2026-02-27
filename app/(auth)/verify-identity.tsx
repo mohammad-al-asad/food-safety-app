@@ -12,9 +12,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { CustomButton } from "@/components/CustomButton";
-import { colors } from "@/constants/colors";
 import SquareIcon from "@/components/SquareIcon";
+import { CustomButton } from "@/components/ui/CustomButton";
+import { colors } from "@/constants/colors";
 
 const OTP_LENGTH = 4;
 const INITIAL_TIMER_SECONDS = 45;
