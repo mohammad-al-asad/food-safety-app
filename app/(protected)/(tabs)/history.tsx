@@ -87,14 +87,14 @@ const StatItem = ({ label, value, color }: any) => (
 );
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F3F6F2' },
+  container: { flex: 1, backgroundColor: '#F3F6F2', },
   header: {
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 12,
   },
   headerTitle: { fontSize: 18, fontWeight: '800', color: '#1F2937' },
-  scrollContent: { padding: 16 },
+  scrollContent: { padding: 16,paddingBottom:100 },
   
   statsCard: {
     backgroundColor: '#FFF',

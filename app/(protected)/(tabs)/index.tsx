@@ -61,8 +61,18 @@ const Home = () => {
           showsHorizontalScrollIndicator={false}
           style={styles.recentScroll}
         >
-          <ProductCard name="Organic Milk" status="UNSAFE" isSafe={false} />
-          <ProductCard name="Oat Bar" status="SAFE" isSafe={true} />
+          <ProductCard
+            img={require("@/assets/images/restaurant1.jpg")}
+            name="Organic Milk"
+            status="UNSAFE"
+            isSafe={false}
+          />
+          <ProductCard
+            img={require("@/assets/images/restaurant2.jpg")}
+            name="Oat Bar"
+            status="SAFE"
+            isSafe={true}
+          />
         </ScrollView>
 
         {/* Nearby Safe-Restaurant */}
@@ -77,7 +87,12 @@ const Home = () => {
           safety="98% Safe"
           rating={5}
           img={require("@/assets/images/restaurant1.jpg")}
-          onPress={() => router.push({ pathname: "/restaurant-details", params: { id: "gathering-table" } })}
+          onPress={() =>
+            router.push({
+              pathname: "/restaurant-details",
+              params: { id: "gathering-table" },
+            })
+          }
         />
         <RestaurantCard
           name="Patio Burger Co."
@@ -86,7 +101,12 @@ const Home = () => {
           safety="98% Safe"
           rating={4}
           img={require("@/assets/images/restaurant2.jpg")}
-          onPress={() => router.push({ pathname: "/restaurant-details", params: { id: "patio-burger" } })}
+          onPress={() =>
+            router.push({
+              pathname: "/restaurant-details",
+              params: { id: "patio-burger" },
+            })
+          }
         />
       </ScrollView>
     </SafeAreaView>
@@ -104,11 +124,10 @@ const SectionHeader = ({ title, onPress }: any) => (
   </View>
 );
 
-const ProductCard = ({ name, status, isSafe }: any) => (
+const ProductCard = ({ name, status, isSafe, img }: any) => (
   <View style={styles.productCard}>
     <View style={styles.productImgContainer}>
-      {/* Placeholder for milk/oat bar */}
-      <View />
+      <Image style={styles.productImg} source={img} resizeMode="cover" />
     </View>
     <Text style={styles.productName}>{name}</Text>
     <Text
@@ -119,8 +138,20 @@ const ProductCard = ({ name, status, isSafe }: any) => (
   </View>
 );
 
-const RestaurantCard = ({ name, dist, tags, safety, rating, img, onPress }: any) => (
-  <TouchableOpacity style={styles.restCard} onPress={onPress} activeOpacity={0.9}>
+const RestaurantCard = ({
+  name,
+  dist,
+  tags,
+  safety,
+  rating,
+  img,
+  onPress,
+}: any) => (
+  <TouchableOpacity
+    style={styles.restCard}
+    onPress={onPress}
+    activeOpacity={0.9}
+  >
     <Image source={img} style={styles.restImg} />
     <View style={styles.restInfo}>
       <View style={styles.restHeaderRow}>
@@ -151,7 +182,7 @@ const RestaurantCard = ({ name, dist, tags, safety, rating, img, onPress }: any)
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F4F9F8" },
-  scrollContent: { padding: 20 },
+  scrollContent: { padding: 20, paddingBottom: 100 },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -248,6 +279,11 @@ const styles = StyleSheet.create({
     height: 110,
     borderRadius: 15,
     marginBottom: 10,
+  },
+  productImg: {
+    height: "100%",
+    width: "100%",
+    borderRadius: 15,
   },
   productName: { fontWeight: "bold", fontSize: 15, marginBottom: 4 },
   statusText: { fontSize: 11, fontWeight: "800" },
