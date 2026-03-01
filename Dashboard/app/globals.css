@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #d3d3d6;
+  --foreground: #1f2937;
+  --token-page-bg: #F9FAFB;
+  --token-card-bg: #FFFFFF;
+  --token-field-bg: #f9fafb;
+  --token-border: #6B7280;
+  --token-heading: #111827;
+  --token-body: #374151;
+  --token-muted: #6b7280;
+  --token-primary: #f26a21;
+  --token-primary-text: #ffffff;
+  --token-error: #dc2626;
+  --color-page-bg: var(--token-page-bg);
+  --color-card-bg: var(--token-card-bg);
+  --color-field-bg: var(--token-field-bg);
+  --color-border: var(--token-border);
+  --color-heading: var(--token-heading);
+  --color-body: var(--token-body);
+  --color-muted: var(--token-muted);
+  --color-primary: var(--token-primary);
+  --color-primary-text: var(--token-primary-text);
+  --color-error: var(--token-error);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-page: var(--token-page-bg);
+  --color-card: var(--token-card-bg);
+  --color-field: var(--token-field-bg);
+  --color-border: var(--token-border);
+  --color-heading: var(--token-heading);
+  --color-body: var(--token-body);
+  --color-muted: var(--token-muted);
+  --color-primary: var(--token-primary);
+  --color-main: var(--token-primary);
+  --color-primary-text: var(--token-primary-text);
+  --color-error: var(--token-error);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-page-bg);
+  color: var(--color-body);
+  font-family: var(--font-geist-sans), "Segoe UI", Arial, sans-serif;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/old Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
