@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageCircle, Bell, User } from "lucide-react";
+import Link from "next/link";
 
 export default function Topbar() {
   return (
@@ -16,21 +17,30 @@ export default function Topbar() {
       {/* Right Side Icons */}
       <div className="flex items-center gap-4">
         {/* Chat */}
-        <button className="relative p-2 rounded-full bg-card border border-primary hover:bg-gray-100 transition">
+        <Link
+          href="/dashboard/messages"
+          className="relative p-2 rounded-full bg-card border border-primary hover:bg-gray-100 transition"
+        >
           <MessageCircle size={18} className="text-primary" />
-        </button>
+        </Link>
 
         {/* Notifications */}
-        <button className="relative p-2 rounded-full bg-card border border-primary hover:bg-gray-100 transition">
+        <Link
+          href="/dashboard/notifications"
+          className="relative p-2 rounded-full bg-card border border-primary hover:bg-gray-100 transition"
+        >
           <Bell size={18} className="text-primary" />
           {/* Notification Dot */}
           <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
-        </button>
+        </Link>
 
         {/* User Avatar */}
-        <button className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-text">
+        <Link
+          href="/dashboard/profile"
+          className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-text"
+        >
           <User size={16} />
-        </button>
+        </Link>
       </div>
     </div>
   );

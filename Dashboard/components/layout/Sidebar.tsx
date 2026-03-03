@@ -3,6 +3,7 @@ import logo from "@/public/appIcon.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { useState } from "react";
 import {
   LayoutDashboard,
   Users,
@@ -15,6 +16,7 @@ import {
   LogOut,
 } from "lucide-react";
 import Image from "next/image";
+import ConfirmationModal from "@/components/modal/ConfirmationModal";
 
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -29,10 +31,12 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [isLogoutConfirmOpen, setIsLogoutConfirmOpen] = useState(false);
 
   return (
-    <div className="h-screen w-64 p-4">
-      <div className="h-full rounded-2xl bg-card shadow-sm flex flex-col">
+    <>
+      <div className="h-screen w-64 p-4">
+        <div className="h-full rounded-2xl bg-card shadow-sm flex flex-col">
         {/* Logo Section */}
         <div className="p-6 flex items-center gap-3 border-b border-primary">
           <Image src={logo} alt="logo" width={10} height={10} className="w-10 h-10 rounded-full bg-primary" />
@@ -67,12 +71,23 @@ export default function Sidebar() {
 
         {/* Logout */}
         <div className="p-4 justify-center flex border-t border-primary rounded-b-lg">
-          <button className="flex items-center gap-2 text-sm text-error hover:scale-[1.05] transition">
+          <button
+            onClick={() => setIsLogoutConfirmOpen(true)}
+            className="flex items-center gap-2 text-sm text-error hover:scale-[1.05] transition"
+          >
             <LogOut size={16} />
             Logout
           </button>
         </div>
       </div>
-    </div>
+      </div>
+      <ConfirmationModal
+        isOpen={isLogoutConfirmOpen}
+        onClose={() => setIsLogoutConfirmOpen(false)}
+        onConfirm={() => setIsLogoutConfirmOpen(false)}
+        title="Confirm logging out!"
+        confirmButtonClassName="bg-[#EF4444] text-white hover:bg-[#dc2626]"
+      />
+    </>
   );
 }

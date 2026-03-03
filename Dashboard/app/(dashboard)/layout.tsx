@@ -8,7 +8,7 @@ export default function DashboardLayout({
   children: ReactNode
 }) {
   return (
-    <div className="h-screen overflow-hidden bg-gray-100">
+    <div className="h-screen overflow-hidden relative bg-gray-100">
       <div className="flex h-full">
         {/* Sidebar */}
         <aside className="w-64 hidden md:block">
@@ -23,7 +23,7 @@ export default function DashboardLayout({
           </header>
 
           {/* Page Content */}
-          <main className="min-h-0 flex-1 overflow-y-auto no-scrollbar px-2 pt-1">
+          <main className="flex-1 overflow-y-auto no-scrollbar px-2 pt-1">
             {children}
           </main>
         </div>
