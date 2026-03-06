@@ -1,0 +1,134 @@
+{
+  "conversations": [
+    {
+      "id": "conv-1",
+      "name": "Alexandra Broke",
+      "role": "Site Supervisor, Phoenix",
+      "time": "12:37",
+      "avatar": "/appIcon.png",
+      "messages": [
+        {
+          "id": "msg-1",
+          "sender": "contact",
+          "text": "Vel et commodo et scelerisque aliquam. Sed libero, non praesent felis, sem eget venenatis neque.",
+          "time": "10:16",
+          "attachment": "/appIcon.png"
+        },
+        {
+          "id": "msg-2",
+          "sender": "contact",
+          "text": "Can you share the handwash checklist for today?",
+          "time": "10:22"
+        },
+        {
+          "id": "msg-3",
+          "sender": "self",
+          "text": "Sure, I am uploading it now.",
+          "time": "10:25"
+        },
+        {
+          "id": "msg-4",
+          "sender": "self",
+          "text": "Done. Please check once.",
+          "time": "12:37"
+        }
+      ]
+    },
+    {
+      "id": "conv-2",
+      "name": "Ellie Smith",
+      "role": "Handyman, Phoenix",
+      "time": "11:04",
+      "avatar": "/appIcon.png",
+      "messages": [
+        {
+          "id": "msg-5",
+          "sender": "contact",
+          "text": "Water leakage in the wash area is fixed.",
+          "time": "09:14"
+        },
+        {
+          "id": "msg-6",
+          "sender": "self",
+          "text": "Great. Add a photo in the report section.",
+          "time": "09:19"
+        },
+        {
+          "id": "msg-7",
+          "sender": "contact",
+          "text": "Ok lets do it!",
+          "time": "11:04"
+        }
+      ]
+    },
+    {
+      "id": "conv-3",
+      "name": "Liam Chen",
+      "role": "Kitchen Lead, Tempe",
+      "time": "09:51",
+      "avatar": "/appIcon.png",
+      "messages": [
+        {
+          "id": "msg-8",
+          "sender": "contact",
+          "text": "Freezer temperature crossed limit for 6 minutes.",
+          "time": "09:40"
+        },
+        {
+          "id": "msg-9",
+          "sender": "self",
+          "text": "Noted. Marked for follow-up and manual verification.",
+          "time": "09:45"
+        },
+        {
+          "id": "msg-10",
+          "sender": "contact",
+          "text": "Sensor is back to normal now.",
+          "time": "09:51"
+        }
+      ]
+    },
+    {
+      "id": "conv-4",
+      "name": "Ava Johnson",
+      "role": "QA Specialist, Mesa",
+      "time": "08:17",
+      "avatar": "/appIcon.png",
+      "messages": [
+        {
+          "id": "msg-11",
+          "sender": "contact",
+          "text": "Need approval for today's sanitation sign-off.",
+          "time": "08:10"
+        },
+        {
+          "id": "msg-12",
+          "sender": "self",
+          "text": "Approved. Please archive the checklist after shift close.",
+          "time": "08:17"
+        }
+      ]
+    },
+    {
+      "id": "conv-5",
+      "name": "Sofia Ali",
+      "role": "Branch Manager, Scottsdale",
+      "time": "Yesterday",
+      "avatar": "/appIcon.png",
+      "messages": [
+        {
+          "id": "msg-13",
+          "sender": "contact",
+          "text": "Monthly audit prep is done. Any additional docs needed?",
+          "time": "18:02"
+        },
+        {
+          "id": "msg-14",
+          "sender": "self",
+          "text": "Please attach pest-control invoice and calibration records.",
+          "time": "18:09"
+        }
+      ]
+    }
+  ]
+}

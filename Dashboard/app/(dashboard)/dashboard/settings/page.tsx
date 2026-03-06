@@ -6,17 +6,17 @@ import Link from "next/link";
 
 const menuItems = [
   { label: "Change Password", href: "/dashboard/settings/change-password" },
-  { label: "Privacy Policy" },
-  { label: "Terms & Conditions" },
-  { label: "About Us" },
+  { label: "Privacy Policy", href: "/dashboard/settings/privacy-policy" },
+  { label: "Terms & Conditions", href: "/dashboard/settings/terms-conditions" },
+  { label: "About Us", href: "/dashboard/settings/about-us" },
 ];
 
 export default function SettingsPage() {
   return (
     <div className="w-full">
-      <div className="w-full overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
-        <div className="bg-main px-4 py-3">
-          <h1 className="text-xl font-medium tracking-tight text-white">
+      <div className="w-full h-[calc(100vh-7.4rem)] overflow-hidden rounded-2xl bg-white shadow-sm">
+        <div className="bg-main px-4 py-4">
+          <h1 className="text-3xl font-bold tracking-tight text-white">
             Settings
           </h1>
         </div>
@@ -52,7 +52,6 @@ export default function SettingsPage() {
           ))}
         </div>
 
-        <div className="h-64 bg-white" />
       </div>
     </div>
   );

@@ -5,11 +5,11 @@ import {
   Ban,
   Search,
   ChevronLeft,
-  ChevronRight,
   ListFilter,
 } from "lucide-react";
 import UserDetailsModal from "@/components/modal/UserDetailsModal";
 import ConfirmationModal from "@/components/modal/ConfirmationModal";
+import TablePagination from "@/components/ui/TablePagination";
 
 export interface User {
   name: string;
@@ -48,7 +48,7 @@ export default function UserList() {
     setIsBlockModalOpen(true);
   };
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+    <div className="bg-white rounded-xl shadow-sm max-h-[calc(100vh-7.6rem)] overflow-hidden flex flex-col">
       <UserDetailsModal
         user={selectedUser}
         isOpen={isModalOpen}
@@ -68,8 +68,8 @@ export default function UserList() {
         }
       />
       {/* --- Orange Header --- */}
-      <div className="bg-main p-4 flex flex-col md:flex-row justify-between items-center gap-4 rounded-t-xl">
-        <h2 className="text-2xl font-semibold text-white">User List</h2>
+      <div className="bg-main p-4 flex flex-col md:flex-row justify-between items-center gap-4 rounded-t-2xl">
+        <h2 className="text-3xl font-bold text-white">User List</h2>
         <div className="flex items-center gap-4 w-full md:w-auto">
           <div className="relative flex-1 md:w-80">
             <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
@@ -87,9 +87,9 @@ export default function UserList() {
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="flex-1 min-h-0 flex flex-col">
         {/* --- Filters Row --- */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-6 p-3">
           <div className="flex gap-2">
             <button className="bg-main text-white px-6 py-2 rounded-md text-sm font-medium">
               User
@@ -107,7 +107,7 @@ export default function UserList() {
         </div>
 
         {/* --- Table Section --- */}
-        <div className="overflow-x-auto">
+        <div className="min-h-0 flex-1 overflow-auto p-6">
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-gray-100">
@@ -170,35 +170,7 @@ export default function UserList() {
         </div>
 
         {/* --- Pagination --- */}
-        <div className="flex flex-col md:flex-row justify-between items-center mt-8 gap-4">
-          <p className="text-sm font-bold text-main uppercase tracking-wider">
-            Showing 1-8 of 250
-          </p>
-          <div className="flex items-center gap-2">
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <ChevronLeft size={20} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded bg-main text-white text-sm">
-              1
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center text-sm text-gray-500 hover:bg-gray-100 rounded">
-              2
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center text-sm text-gray-500 hover:bg-gray-100 rounded">
-              3
-            </button>
-            <span className="px-1 text-gray-400">4....30</span>
-            <button className="w-8 h-8 flex items-center justify-center text-sm text-gray-500 hover:bg-gray-100 rounded">
-              60
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center text-sm text-gray-500 hover:bg-gray-100 rounded">
-              120
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        </div>
+        <TablePagination />
       </div>
     </div>
   );

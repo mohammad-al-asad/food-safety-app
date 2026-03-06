@@ -19,12 +19,12 @@ export default function NotificationsPage() {
   return (
     <div className="w-full">
       {/* Container matches the rounded white card style */}
-      <div className="mx-auto w-full overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100">
+      <div className="mx-auto w-full rounded-2xl bg-white shadow-sm border border-gray-100 max-h-[calc(100vh-7.6rem)] overflow-auto">
         {/* Header - Matches the orange bar with text and back arrow */}
-        <div className="bg-main px-6 py-5 text-white">
+        <div className="bg-main px-6 py-4 text-white">
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 text-2xl font-semibold hover:opacity-90 transition-opacity"
+            className="flex items-center gap-2 text-3xl font-bold hover:opacity-90 transition-opacity"
           >
             <ChevronLeft size={28} strokeWidth={2.5} />
             <span>All Notifications</span>
