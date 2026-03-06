@@ -20,16 +20,16 @@ export default function ProfilePage() {
 
   return (
     <div className="flex justify-center items-start">
-      <div className="w-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-[87vh]">
-        <div className="bg-main px-6 py-5">
+      <div className="w-full h-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col pb-4">
+        <div className="bg-main px-6 py-4">
           <h1 className="text-3xl font-bold text-white tracking-wide">
             Profile
           </h1>
         </div>
 
-        <div className="p-10 flex flex-col items-center">
-          <div className="relative mb-4">
-            <div className="w-32 h-32 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+        <div className="p-3 flex-1 flex flex-col items-center">
+          <div className="relative mb-2">
+            <div className="w-28 h-28 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
               <Image
                 src="/appIcon.png"
                 alt="Mr. Admin"
@@ -43,9 +43,9 @@ export default function ProfilePage() {
             </button>
           </div>
 
-          <h2 className="text-2xl font-bold text-[#1E293B] mb-8">Mr. Admin</h2>
+          <h2 className="text-2xl font-bold text-[#1E293B] mb-3">Mr. Admin</h2>
 
-          <div className="flex gap-8 mb-10 border-b border-gray-50 w-full justify-center pb-2">
+          <div className="flex gap-8 mb-4 border-b border-gray-50 w-full justify-center">
             <button
               onClick={() => setActiveTab("edit")}
               className={`text-sm font-semibold transition-colors ${
@@ -69,7 +69,7 @@ export default function ProfilePage() {
           </div>
 
           {activeTab === "edit" ? (
-            <form className="w-full max-w-lg space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="w-full max-w-lg space-y-3" onSubmit={(e) => e.preventDefault()}>
               <CustomInput
                 label="User Name"
                 value={profileValues.userName}
@@ -108,7 +108,7 @@ export default function ProfilePage() {
               </div>
             </form>
           ) : (
-            <form className="w-full max-w-lg space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="w-full max-w-lg space-y-3" onSubmit={(e) => e.preventDefault()}>
               <CustomInput
                 label="Current Password"
                 type="password"

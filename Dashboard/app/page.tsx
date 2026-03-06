@@ -131,8 +131,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-page px-4 py-6">
-      <main className="flex min-h-192.25 w-full max-w-235 items-center justify-center rounded-md bg-card px-7 py-11 shadow-md">
+    <div className="flex h-screen items-center justify-center  px-4 py-6 bg-page">
+      <main className="flex w-full max-w-235 items-center justify-center rounded-md bg-card px-7 py-11 shadow-md">
         <section className="w-full px-32">
           <div className="flex justify-center mb-20">
             <Image
