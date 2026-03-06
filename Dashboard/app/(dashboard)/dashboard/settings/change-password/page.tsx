@@ -133,15 +133,15 @@ export default function ChangePasswordPage() {
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-card shadow-sm">
-        <div className="bg-main px-4 py-3">
+    <div className="max-h-[calc(100vh-8.5rem)]">
+      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-card shadow-sm">
+        <div className="bg-main px-4 py-4">
           <button
             onClick={handleBack}
             className="inline-flex items-center gap-3 text-white"
           >
             <ArrowLeft size={30} />
-            <h1 className="text-4xl font-medium tracking-tight">{headerTitle}</h1>
+            <h1 className="text-3xl font-bold tracking-tight">{headerTitle}</h1>
           </button>
         </div>
 
@@ -204,7 +204,7 @@ export default function ChangePasswordPage() {
 
               <button
                 type="submit"
-                className="mt-6 w-full rounded-md bg-main py-2.5 text-2xl font-bold text-white transition-colors hover:bg-[#d9561a]"
+                className="mt-6 w-full rounded-md bg-main py-2.5 text-lg font-bold text-white transition-colors hover:bg-[#d9561a]"
               >
                 Change Password
               </button>
@@ -239,7 +239,7 @@ export default function ChangePasswordPage() {
 
               <button
                 type="submit"
-                className="mt-6 w-full rounded-md bg-main py-2.5 text-2xl font-bold text-white transition-colors hover:bg-[#d9561a]"
+                className="mt-6 w-full rounded-md bg-main py-2.5 text-lg font-bold text-white transition-colors hover:bg-[#d9561a]"
               >
                 Get OTP
               </button>
@@ -299,7 +299,7 @@ export default function ChangePasswordPage() {
 
               <button
                 type="submit"
-                className="w-full rounded-md bg-main py-2.5 text-2xl font-bold text-white transition-colors hover:bg-[#d9561a]"
+                className="w-full rounded-md bg-main py-2.5 text-lg font-bold text-white transition-colors hover:bg-[#d9561a]"
               >
                 Verify
               </button>
