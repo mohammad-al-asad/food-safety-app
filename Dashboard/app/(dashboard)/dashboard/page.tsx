@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -9,8 +10,7 @@ import {
   ResponsiveContainer,
   TooltipContentProps,
 } from "recharts";
-import { Eye, Ban } from "lucide-react";
-import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 // Mock Data
 const stats = [
@@ -34,16 +34,25 @@ const chartData = [
   { name: "Dec", users: 780 },
 ];
 
-const userData = Array(6).fill({
-  id: "01",
-  name: "Robert Fox",
-  email: "fox@email",
-  phone: "+123124",
-  type: "Restaurant Owner",
-  date: "02-24-2024",
-});
+const yearOptions = ["Year-2024", "Year-2023"];
 
 export default function Dashboard() {
+  const [selectedYear, setSelectedYear] = useState(yearOptions[0]);
+  const [isYearMenuOpen, setIsYearMenuOpen] = useState(false);
+  const yearMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!yearMenuRef.current) return;
+      if (!yearMenuRef.current.contains(event.target as Node)) {
+        setIsYearMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Top Stats Cards */}
@@ -60,7 +69,7 @@ export default function Dashboard() {
       </div>
 
       {/* Chart Section */}
-      <div className="bg-card rounded-xl p-6 shadow-sm border border-gray-100">
+      <div className="bg-card rounded-xl p-6 shadow-sm border border-gray-100 max-h-[calc(100vh-19rem)] overflow-hidden flex flex-col">
         <div className="flex justify-between items-center mb-8">
           <div>
             <h3 className="text-xl font-semibold text-heading">User Ratio</h3>
@@ -69,9 +78,43 @@ export default function Dashboard() {
               <span className="text-sm text-muted">Users</span>
             </div>
           </div>
-          <select className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium outline-none">
-            <option>Year-2024</option>
-          </select>
+          <div ref={yearMenuRef} className="relative w-32">
+            <button
+              type="button"
+              onClick={() => setIsYearMenuOpen((previous) => !previous)}
+              className="w-full rounded-lg bg-primary px-4 py-2 text-left text-sm font-semibold text-white outline-none"
+            >
+              {selectedYear}
+            </button>
+            <ChevronDown
+              size={16}
+              className={`pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-white transition-transform ${
+                isYearMenuOpen ? "rotate-180" : ""
+              }`}
+            />
+
+            {isYearMenuOpen && (
+              <div className="absolute z-20 mt-1 w-full overflow-hidden rounded-md border border-gray-200 bg-white shadow-md">
+                {yearOptions.map((yearOption) => (
+                  <button
+                    key={yearOption}
+                    type="button"
+                    onClick={() => {
+                      setSelectedYear(yearOption);
+                      setIsYearMenuOpen(false);
+                    }}
+                    className={`block w-full px-4 py-2 text-left text-sm transition-colors ${
+                      selectedYear === yearOption
+                        ? "bg-main text-white"
+                        : "text-[#0f172a] hover:bg-main/10"
+                    }`}
+                  >
+                    {yearOption}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="h-87.5 w-full">
@@ -126,7 +169,7 @@ export default function Dashboard() {
       </div>
 
       {/* Table Section */}
-      <div className="space-y-4">
+      {/* <div className="space-y-4">
         <h3 className="text-xl font-semibold text-heading">Recent Users</h3>
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-card">
           <table className="w-full text-left border-collapse">
@@ -180,7 +223,7 @@ export default function Dashboard() {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -25,11 +25,11 @@ export default function ManageFeesModal({
 
   return (
     <div
-      className="fixed inset-0 z-100 flex items-center justify-center bg-black/30 p-4"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 p-4"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-85 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-xl"
+        className="w-full max-w-85 overflow-hidden rounded-xl bg-white shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="bg-main py-4 text-center">

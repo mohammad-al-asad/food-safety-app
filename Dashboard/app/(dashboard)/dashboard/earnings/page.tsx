@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Eye, Download, ChevronLeft, ChevronRight } from "lucide-react";
+import { Eye, Download } from "lucide-react";
 import Image from "next/image";
 import TransactionDetailsModal from "@/components/modal/TransactionDetailsModal";
+import TablePagination from "@/components/ui/TablePagination";
 
 const stats = [
   { label: "Today", value: "1.2k" },
@@ -48,7 +49,7 @@ export default function EarningsPage() {
   };
 
   return (
-    <div className="space-y-6 min-h-screen">
+    <div className="space-y-6">
       <TransactionDetailsModal
         isOpen={isTransactionModalOpen}
         onClose={() => {
@@ -62,9 +63,9 @@ export default function EarningsPage() {
         {stats.map((stat, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center justify-center py-10 border-r last:border-r-0 border-gray-100"
+            className="flex flex-col items-center justify-center py-6 border-r last:border-r-0 border-gray-100"
           >
-            <h2 className="text-4xl font-bold text-[#1E293B]">{stat.value}</h2>
+            <h2 className="text-3xl font-bold text-[#1E293B]">{stat.value}</h2>
             <p className="text-[#64748B] text-base mt-2 font-medium">
               {stat.label}
             </p>
@@ -72,8 +73,8 @@ export default function EarningsPage() {
         ))}
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
+      <div className="bg-white rounded-xl shadow-sm overflow-hidden max-h-[calc(100vh-16.4rem)] flex flex-col">
+        <div className="min-h-0 flex-1 overflow-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-main text-white">
@@ -134,37 +135,7 @@ export default function EarningsPage() {
           </table>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center p-6 gap-4">
-          <p className="text-sm font-bold text-main uppercase tracking-wider">
-            Showing 1-8 of 250
-          </p>
-          <div className="flex items-center gap-2">
-            <button className="p-2 text-[#64748B] hover:text-main">
-              <ChevronLeft size={20} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded bg-main text-white text-sm font-bold">
-              1
-            </button>
-            {[2, 3].map((num) => (
-              <button
-                key={num}
-                className="w-8 h-8 flex items-center justify-center text-sm text-[#64748B] hover:bg-gray-100 rounded"
-              >
-                {num}
-              </button>
-            ))}
-            <span className="px-1 text-[#CBD5E1]">4....30</span>
-            <button className="w-10 h-8 flex items-center justify-center text-sm text-[#64748B] hover:bg-gray-100 rounded">
-              60
-            </button>
-            <button className="w-10 h-8 flex items-center justify-center text-sm text-[#64748B] hover:bg-gray-100 rounded">
-              120
-            </button>
-            <button className="p-2 text-[#64748B] hover:text-main">
-              <ChevronRight size={20} />
-            </button>
-          </div>
-        </div>
+        <TablePagination />
       </div>
     </div>
   );

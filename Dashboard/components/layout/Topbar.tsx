@@ -1,28 +1,40 @@
 "use client";
 
-import { MessageCircle, Bell, User } from "lucide-react";
+import { Bell, Menu, User } from "lucide-react";
 import Link from "next/link";
 
-export default function Topbar() {
+type TopbarProps = {
+  onMenuClick?: () => void;
+};
+
+export default function Topbar({ onMenuClick }: TopbarProps) {
   return (
     <div className="w-full flex items-center justify-between">
       {/* Welcome Section */}
-      <div>
-        <p className="text-sm text-muted">Welcome,</p>
-        <h2 className="text-lg font-semibold text-heading">
-          James
-        </h2>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onMenuClick}
+          aria-label="Open menu"
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-main transition-colors hover:bg-orange-50"
+        >
+          <Menu size={22} />
+        </button>
+        <div>
+          <p className="text-sm text-muted">Welcome,</p>
+          <h2 className="text-lg font-semibold text-heading">James</h2>
+        </div>
       </div>
 
       {/* Right Side Icons */}
       <div className="flex items-center gap-4">
         {/* Chat */}
-        <Link
+        {/* <Link
           href="/dashboard/messages"
           className="relative p-2 rounded-full bg-card border border-primary hover:bg-gray-100 transition"
         >
           <MessageCircle size={18} className="text-primary" />
-        </Link>
+        </Link> */}
 
         {/* Notifications */}
         <Link

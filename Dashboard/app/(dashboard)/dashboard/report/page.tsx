@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import TablePagination from "@/components/ui/TablePagination";
 
 const reportData = Array(12).fill({
   id: "01",
@@ -15,14 +15,14 @@ const reportData = Array(12).fill({
 export default function ReportsPage() {
   return (
     <div>
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="bg-main px-6 py-5">
+      <div className="bg-white rounded-2xl shadow-sm overflow-hidden max-h-[calc(100vh-7.6rem)] flex flex-col">
+        <div className="bg-main px-6 py-4">
           <h1 className="text-3xl font-bold text-white tracking-wide">
             Reports
           </h1>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="min-h-0 flex-1 overflow-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-gray-100">
@@ -34,9 +34,6 @@ export default function ReportsPage() {
                 </th>
                 <th className="px-6 py-5 text-sm font-semibold text-main text-center">
                   Report Reason
-                </th>
-                <th className="px-6 py-5 text-sm font-semibold text-main text-center">
-                  Report TO
                 </th>
                 <th className="px-6 py-5 text-sm font-semibold text-main text-right">
                   Date & Time
@@ -70,22 +67,6 @@ export default function ReportsPage() {
                     {report.reason}
                   </td>
 
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3 justify-center">
-                      <div className="w-9 h-9 rounded-full overflow-hidden relative border border-gray-100">
-                        <Image
-                          src="/appIcon.png"
-                          alt="user"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <span className="text-sm font-medium text-[#334155]">
-                        {report.to}
-                      </span>
-                    </div>
-                  </td>
-
                   <td className="px-6 py-4 text-sm text-[#64748B] text-right font-medium">
                     {report.dateTime}
                   </td>
@@ -95,35 +76,7 @@ export default function ReportsPage() {
           </table>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center p-8 gap-4">
-          <p className="text-sm font-bold text-main uppercase tracking-widest">
-            Showing 1-8 of 250
-          </p>
-          <div className="flex items-center gap-2">
-            <button className="p-2 text-gray-400 hover:text-main transition-colors">
-              <ChevronLeft size={22} />
-            </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded bg-main text-white text-sm font-bold shadow-sm">
-              1
-            </button>
-            <button className="w-9 h-9 flex items-center justify-center text-sm text-[#64748B] hover:bg-gray-100 rounded transition-colors">
-              2
-            </button>
-            <button className="w-9 h-9 flex items-center justify-center text-sm text-[#64748B] hover:bg-gray-100 rounded transition-colors">
-              3
-            </button>
-            <span className="px-2 text-[#CBD5E1] font-medium">4.....30</span>
-            <button className="w-10 h-9 flex items-center justify-center text-sm text-[#64748B] hover:bg-gray-100 rounded transition-colors">
-              60
-            </button>
-            <button className="w-10 h-9 flex items-center justify-center text-sm text-[#64748B] hover:bg-gray-100 rounded transition-colors">
-              120
-            </button>
-            <button className="p-2 text-gray-400 hover:text-main transition-colors">
-              <ChevronRight size={22} />
-            </button>
-          </div>
-        </div>
+        <TablePagination />
       </div>
     </div>
   );
